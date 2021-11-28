@@ -1,5 +1,4 @@
 /* 
-    Bryan McCarthy 
 
     index.js -- starting point of the application
     
@@ -47,6 +46,7 @@ function menu() {
 // Function for Options menu
 export function options() {
 
+    // Display the options 
     console.log("\n");
     const optionsinterface = (title("Ticket View Options:\n * Press " + option("1 ") + "to view all tickets\n * Press " + option("2 ") + "to view a ticket by ID\n * Type 'quit' to exit\n"));
     console.log(optionsinterface);
@@ -72,6 +72,7 @@ export function options() {
             return;
 
         default:
+            // If user input is invalid, ask them to try again
             console.log(title("Please enter a valid option.\n"));
             options();
     }
