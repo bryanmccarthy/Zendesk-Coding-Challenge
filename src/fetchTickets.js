@@ -27,20 +27,25 @@ export async function fetchAllTickets() {
 
     let url = `https://zccbryanmccarthy.zendesk.com/api/v2/tickets.json?page[size]=${page_size}`;
 
+    // While valid url
     while(url != null) {
         
+        // Get response from the Zendesk API
         let response = await fetchRequest(url);
 
         if (response != null) {
+            // Call displayTickets to view page of tickets
             displayTickets(response);
         } else {
         console.log(title("Sorry, API did not respond.\n"));
         }
 
+        // If tickets on next page exist
         if (response.meta.has_more === true) {
             let viewNextPage = prompt(title("Would you like to view the next page? Type 'yes' or 'no' "));
 
             if(viewNextPage === 'yes') {
+                // Set url to the next page of 25 tickets
                 url = response.links.next
             } else {
                 break;
@@ -55,21 +60,25 @@ export async function fetchAllTickets() {
     options();
 }
 
+// Function to fetch a single ticket by id
 export async function fetchSingleTicket() {
 
     let ticketID = prompt(title("Please enter a ticket id: "));
 
     let url = `https://zccbryanmccarthy.zendesk.com/api/v2/tickets/${ticketID}.json`;
 
+    // Get response from the Zendesk API
     let response = await fetchRequest(url)
 
     if (response != null) {
+        // Call displayTicket to display the requested ticket
         displayTicket(response);
     } else {
         console.log(title("Sorry, API did not respond.\n"));
     }
 }
 
+// Function to validate a request to the Zendesk API
 async function fetchRequest(url) {
 
     const bearer = 'Bearer ' + token;
