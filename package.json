@@ -1,0 +1,19 @@
+{
+  "name": "zendeskticketviewer",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test1": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "test": "./node_modules/.bin/jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "jest": "^27.3.1",
+    "readline-sync": "^1.4.10"
+  }
+}
